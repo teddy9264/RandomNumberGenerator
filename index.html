@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
 <head>
 <meta charset="utf-8">
@@ -12,17 +12,32 @@
 	<input id="max"><br><br>
 	<label for="min">Min:</label>
 	<input id="min"><br><br>
-	<button onclick="randomNumber()">Submit</button>
-	
-	<p id="output"></p>
+	<button onclick="createList()">Submit</button>
+	<div id="output">
+		
+	</div>
 	<script>
+
 		function randomNumber() {
 			var amount = document.getElementById("amount");
-			var max = document.getElementById("max");
-			var min = document.getElementById("min");
-			while (amount > 0) {
-				document.getElementById("output").innerHTML = Math.floor((Math.random() * max) + min);
-				amount--;
+			var max = parseInt(document.getElementById("max").value);
+			var min = parseInt(document.getElementById("min").value);
+			var randomNumber = (Math.random() * max) + min;
+			if (randomNumber > max){
+				randomNumber = max;
+			}
+			return Math.floor(randomNumber);
+		}
+		function genetateNew(){
+			var newNode = document.createElement('p');
+			newNode.innerHTML = String(randomNumber());
+			document.getElementById("output").appendChild(newNode);
+		}
+		function createList(){
+			var countdown = parseInt(document.getElementById("amount").value);
+			while(countdown >= 0){
+				genetateNew();
+				countdown = countdown -1;
 			}
 		}
 	</script>
