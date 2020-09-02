@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
 <head>
 <meta charset="utf-8">
@@ -18,9 +18,21 @@
 	<script>
 		function randomNumber() {
 			var amount = document.getElementById("amount");
-			var max = document.getElementById("max").value;
-			var min = document.getElementById("min").value;
-		document.getElementById("output").innerHTML = Math.floor((Math.random() * max) + min);
+			var max = parseInt(document.getElementById("max").value);
+			var min = parseInt(document.getElementById("min").value);
+			var randomNumber = Math.random() * max;
+			var randomNumberRounded = Math.floor(randomNumber);
+			var randomNumberSafe;
+			if (randomNumberRounded > max){
+				randomNumberSafe = max;
+			}
+			if (randomNumberRounded < min){
+				randomNumberSafe = min;
+			}
+			else{
+				randomNumberSafe = randomNumberRounded;
+			}
+		document.getElementById("output").innerHTML = randomNumberSafe;
 
 		}
 	</script>
